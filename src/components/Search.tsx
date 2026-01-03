@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { use, useEffect } from "react";
 import searchIcon from "../assets/icon-search.svg";
 import { useData } from "../context/cont";
 

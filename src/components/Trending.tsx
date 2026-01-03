@@ -1,4 +1,4 @@
-import TrendingMovie from "./TrendingMovie.tsx";
+import TrendingMovie from "./TrendingMovie";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 

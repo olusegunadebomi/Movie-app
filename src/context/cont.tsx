@@ -1,5 +1,6 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, use, useContext, useEffect, useState } from "react";
 import { MovieData, MyContext } from "../types";
+import { searchMovies } from "../Services/Data";
 
 const DataContext = createContext<MyContext | null>(null);
 
@@ -10,6 +11,8 @@ function DataProvider({ children }: { children: React.ReactNode }) {
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
 
+  // Trigger a search when `query` changes and store results in `movies`.
+
   const toggleBookmark = (movie: MovieData) => {
     setBookmarks((prevBookmarks) =>
       prevBookmarks.some(
@@ -19,6 +22,26 @@ function DataProvider({ children }: { children: React.ReactNode }) {
         : [...prevBookmarks, movie]
     );
   };
+
+  useEffect(() => {
+    if (query.trim() === "") {
+      setMovies([]);
+      return;
+    }
+
+    const fetchSearchResults = async () => {
+      const [moviesResult, seriesResult] = await Promise.all([
+        searchMovies(query),
+        searchMovies(query + " series"),
+      ]);
+
+      const results = [...moviesResult, ...seriesResult];
+      setMovies(results);
+      console.log("Search results for", query, ":", results);
+    };
+
+    fetchSearchResults();
+  }, [query]);
 
   return (
     <DataContext.Provider

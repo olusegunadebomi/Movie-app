@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Home from "./features/home/Home.tsx";
-import Movies from "./features/movies/Movies.tsx";
-import Series from "./features/series/Series.tsx";
-import Bookmarks from "./features/bookmarks/Bookmarks.tsx";
-import AppLayout from "./components/AppLayout.tsx";
-import { MoviesLoaders } from "./Loaders/MoviesLoaders.tsx";
-import { SeriesLoaders } from "./Loaders/SeriesLoaders.tsx";
-import { HomeLoaders } from "./Loaders/HomeLoaders.tsx";
+import Home from "./features/home/Home";
+import Movies from "./features/movies/Movies";
+import Series from "./features/series/Series";
+import Bookmarks from "./features/bookmarks/Bookmarks";
+import AppLayout from "./components/AppLayout";
+import { MoviesLoaders } from "./Loaders/MoviesLoaders";
+import { SeriesLoaders } from "./Loaders/SeriesLoaders";
+import { HomeLoaders } from "./Loaders/HomeLoaders";
 
 const base =
   import.meta.env.BASE_URL === "/"

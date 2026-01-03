@@ -1,21 +1,19 @@
-import Search from "../../components/Search";
-import Movie from "../../components/Movie";
-import Trending from "../../components/Trending";
-// import { MovieData, MovieProps } from "../../types.ts";
 import { useLoaderData } from "react-router-dom";
-import { MovieData } from "../../types";
+import { MovieData } from "../types";
+import Search from "./Search";
+import Trending from "./Trending";
+import Movie from "./Movie";
+import { useData } from "../context/cont";
 
 function Home() {
-  const { movies, series } = useLoaderData() as {
-    movies: MovieData[];
-    series: MovieData[];
-  };
+  const { movies, series, query } = useData();
 
   const combined = [...movies, ...series];
   const recommended = combined.slice(0, 10);
 
   const recommendedText =
-    series.length === 0 ? "No Recommended" : "Recommended for you";
+    recommended.length === 0 ? "No Recommended" : "Recommended for you";
+
   return (
     <div>
       <Search placeholder="Search for movies or TV series" />

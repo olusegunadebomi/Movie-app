@@ -1,7 +1,7 @@
 import { useLoaderData } from "react-router-dom";
-import Movie from "../../components/Movie.tsx";
-import { useData } from "../../context/cont.tsx";
-import { MovieData } from "../../types.ts";
+import Movie from "../../components/Movie";
+import { useData } from "../../context/cont";
+import { MovieData } from "../../types";
 import { useEffect } from "react";
 
 function Movies() {

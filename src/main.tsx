@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
+import App from "./App";
 
-import { DataProvider } from "./context/cont.tsx";
+import { DataProvider } from "./context/cont";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 

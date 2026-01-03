@@ -1,5 +1,5 @@
-import Movie from "../../components/Movie.tsx";
-import { useData } from "../../context/cont.tsx";
+import Movie from "../../components/Movie";
+import { useData } from "../../context/cont";
 
 function Bookmarks() {
   const { bookmarks } = useData();
