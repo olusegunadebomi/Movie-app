@@ -1,16 +1,22 @@
 import MovieSVG from "../assets/icon-category-movie.svg";
 import PlaySVG from "../assets/icon-play.svg";
 import EmptyBookmarkSVG from "../assets/icon-bookmark-empty.svg";
+import FullBookmarkSVG from "../assets/icon-bookmark-full.svg";
 import { useState } from "react";
+import { MovieProps } from "../types";
+import { useData } from "../context/cont";
 
-function TrendingMovie() {
+function TrendingMovie({ movie }: MovieProps) {
   const [bookmarkHover, setBookmarkHover] = useState(false);
+  const { bookmarks, toggleBookmark } = useData();
+  const isBookmarked = bookmarks.some((b) => b.imdbID === movie.imdbID);
+  const { Title: title, Year: year, Poster: poster } = movie;
 
   return (
     <div className="mb-6 w-60 h-35 relative md:w-full md:h-58 md:mb-10">
       <div className="relative group cursor-pointer">
         <img
-          src=""
+          src={poster || ""}
           alt="movie"
           className={`w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:opacity-50 ${
             bookmarkHover ? "opacity-75 blur-[1px]" : ""
@@ -29,11 +35,16 @@ function TrendingMovie() {
       </div>
 
       <button
+        onClick={() => toggleBookmark(movie)}
+        aria-pressed={isBookmarked}
         onMouseEnter={() => setBookmarkHover(true)}
         onMouseLeave={() => setBookmarkHover(false)}
         className="absolute top-2 right-2 md:top-4 md:right-6 w-8 h-8 flex items-center justify-center rounded-full border border-white bg-gray-900 bg-opacity-50 hover:opacity-50"
       >
-        <img src={EmptyBookmarkSVG} alt="bookmark" />
+        <img
+          src={isBookmarked ? FullBookmarkSVG : EmptyBookmarkSVG}
+          alt="bookmark"
+        />
       </button>
 
       <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6">
@@ -50,7 +61,7 @@ function TrendingMovie() {
               alt="category"
               className="w-3 h-3 scale-85 md:scale-100"
             />
-            <span>Movie</span>
+            <span>{year}</span>
           </div>
           <div className="w-1 h-1 rounded-full border border-white" />
           <span>PG</span>
@@ -60,7 +71,7 @@ function TrendingMovie() {
             bookmarkHover ? "scale-105 md:scale-110 md:text-3xl" : ""
           }`}
         >
-          Trending Movie Title
+          {title}
         </h3>
       </div>
     </div>

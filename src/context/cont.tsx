@@ -1,6 +1,7 @@
-import { createContext, use, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { MovieData, MyContext } from "../types";
 import { searchMovies } from "../Services/Data";
+// import fetchTrendingMovies from "../Services/fetchTrending";
 
 const DataContext = createContext<MyContext | null>(null);
 
@@ -22,6 +23,15 @@ function DataProvider({ children }: { children: React.ReactNode }) {
         : [...prevBookmarks, movie]
     );
   };
+
+  // useEffect(() => {
+  //   const loadTrending = async () => {
+  //     const data = await fetchTrendingMovies();
+  //     setMovies(data);
+  //   };
+
+  //   loadTrending();
+  // }, []);
 
   useEffect(() => {
     if (query.trim() === "") {
