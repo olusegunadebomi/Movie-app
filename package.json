@@ -20,7 +20,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "predeploy": "npm run build",
+    "predeploy": "vite build --base=/Movie-app/",
     "deploy": "gh-pages -d dist",
     "test": "echo \"No tests configured for Vite migration.\" && exit 0"
   },
