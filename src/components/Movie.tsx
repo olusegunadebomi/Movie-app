@@ -16,7 +16,7 @@ function Movie({ movie }: MovieProps) {
 
   return (
     <div className="w-full min-w-0">
-      <div className="relative w-full aspect-[4/3]">
+      <div className="relative w-full aspect-4/3">
         <div className="relative group cursor-pointer">
           <img
             src={poster || ""}
