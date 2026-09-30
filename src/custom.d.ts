@@ -15,6 +15,7 @@ declare module "*.svg" {
   const src: string;
   export default src;
 }
+declare module "@splidejs/react-splide/css";
 
 // If library types can't be resolved correctly, fall back to any for now
 declare module "@splidejs/react-splide" {

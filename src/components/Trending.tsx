@@ -1,6 +1,7 @@
 import TrendingMovie from "./TrendingMovie";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
+
 import { useData } from "../context/cont";
 
 function Trending() {
