@@ -5,7 +5,7 @@
 
 @layer components {
   .Navbar {
-    @apply scale-75 md:scale-100 fill-[#5A698F] hover:fill-[#FC4747] transition-colors;
+    @apply fill-[#5A698F] hover:fill-[#FC4747] transition-colors;
   }
 
   .Navbar-active {
