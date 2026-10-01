@@ -5,7 +5,7 @@
 
 @layer components {
   .Navbar {
-    @apply scale-75 md:scale-100 fill-[#5A698F] hover:fill-[#FC4747] transition-colors;
+    @apply fill-[#5A698F] hover:fill-[#FC4747] transition-colors;
   }
 
   .Navbar-active {
@@ -25,6 +25,10 @@ body {
   padding-top: 5rem;
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.pagination-controls {
+  margin-top: 2.5rem;
 }
 
 @media screen and (min-width: 768px) {

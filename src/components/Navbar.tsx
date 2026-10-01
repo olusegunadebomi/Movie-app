@@ -26,37 +26,41 @@ function Navbar() {
           to="/"
           end
           className={({ isActive }) =>
-            `Navbar ${isActive ? "Navbar-active" : ""}`
+            `Navbar flex flex-col items-center gap-1 text-center text-[10px] leading-none hover:text-white ${isActive ? "Navbar-active text-white" : "text-white/65"}`
           }
         >
-          <img src={NavHomeSVG} alt="home" className="w-6 h-6" />
+          <img src={NavHomeSVG} alt="" className="w-6 h-6" />
+          <span>Home</span>
         </NavLink>
 
         <NavLink
           to="/movies"
           className={({ isActive }) =>
-            `Navbar ${isActive ? "Navbar-active" : ""}`
+            `Navbar flex flex-col items-center gap-1 text-center text-[10px] leading-none hover:text-white ${isActive ? "Navbar-active text-white" : "text-white/65"}`
           }
         >
-          <img src={NavMoviesSVG} alt="movies" className="w-6 h-6" />
+          <img src={NavMoviesSVG} alt="" className="w-6 h-6" />
+          <span>Movies</span>
         </NavLink>
 
         <NavLink
           to="/series"
           className={({ isActive }) =>
-            `Navbar ${isActive ? "Navbar-active" : ""}`
+            `Navbar flex flex-col items-center gap-1 text-center text-[10px] leading-none hover:text-white ${isActive ? "Navbar-active text-white" : "text-white/65"}`
           }
         >
-          <img src={NavSeriesSVG} alt="series" className="w-6 h-6" />
+          <img src={NavSeriesSVG} alt="" className="w-6 h-6" />
+          <span>Series</span>
         </NavLink>
 
         <NavLink
           to="/bookmarks"
           className={({ isActive }) =>
-            `Navbar ${isActive ? "Navbar-active" : ""}`
+            `Navbar flex flex-col items-center gap-1 text-center text-[10px] leading-none hover:text-white ${isActive ? "Navbar-active text-white" : "text-white/65"}`
           }
         >
-          <img src={NavBookmarksSVG} alt="bookmarks" className="w-6 h-6" />
+          <img src={NavBookmarksSVG} alt="" className="w-6 h-6" />
+          <span>Bookmarks</span>
         </NavLink>
       </div>
 
