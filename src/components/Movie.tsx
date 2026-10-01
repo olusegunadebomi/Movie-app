@@ -17,11 +17,11 @@ function Movie({ movie }: MovieProps) {
 
   return (
     <div className="w-full min-w-0">
-      <div className="relative w-full aspect-4/3">
+      <div className="relative w-full aspect-2/3 overflow-hidden rounded-lg">
         <Link
           to={`/movie/${movie.imdbID}`}
           aria-label={`View details for ${title}`}
-          className="relative block h-full group cursor-pointer"
+          className="absolute inset-0 group cursor-pointer overflow-hidden rounded-lg"
         >
           <img
             src={poster || ""}
@@ -56,34 +56,34 @@ function Movie({ movie }: MovieProps) {
             alt="bookmark"
           />
         </button>
+      </div>
 
-        <div className="mt-1">
-          <div
-            className={`flex items-center gap-2 text-xs md:text-sm font-light text-white opacity-75 transition-all duration-300 ${
-              bookmarkHover ? "scale-105 text-sm md:text-base" : ""
-            }`}
-          >
-            <span>{year}</span>
-            <div className="w-1 h-1 rounded-full border border-white" />
-            <div className="flex items-center gap-1">
-              <img
-                src={MovieSVG}
-                alt="category"
-                className="w-3 h-3 scale-85 md:scale-100"
-              />
-              <span>{movie.Type === "series" ? "TV Series" : "Movie"}</span>
-            </div>
-            <div className="w-1 h-1 rounded-full border border-white" />
-            <span>PG</span>
+      <div className="mt-2 min-w-0">
+        <div
+          className={`flex min-h-5 items-center gap-2 whitespace-nowrap text-xs md:text-sm font-light text-white opacity-75 transition-all duration-300 ${
+            bookmarkHover ? "scale-105 text-sm md:text-base" : ""
+          }`}
+        >
+          <span>{year}</span>
+          <div className="w-1 h-1 rounded-full border border-white" />
+          <div className="flex items-center gap-1">
+            <img
+              src={MovieSVG}
+              alt="category"
+              className="w-3 h-3 scale-85 md:scale-100"
+            />
+            <span>{movie.Type === "series" ? "TV Series" : "Movie"}</span>
           </div>
-          <h3
-            className={`truncate font-medium text-sm md:text-lg text-white transition-transform duration-300 ${
-              bookmarkHover ? "scale-105 md:scale-110 md:text-xl" : ""
-            }`}
-          >
-            {title}
-          </h3>
+          <div className="w-1 h-1 rounded-full border border-white" />
+          <span>PG</span>
         </div>
+        <h3
+          className={`truncate font-medium text-sm md:text-lg text-white transition-transform duration-300 ${
+            bookmarkHover ? "scale-105 md:scale-110 md:text-xl" : ""
+          }`}
+        >
+          {title}
+        </h3>
       </div>
     </div>
   );
