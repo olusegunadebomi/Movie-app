@@ -1,6 +1,5 @@
-import { fetchSeries } from "../Services/Data";
+import { fetchMoviesPage } from "../Services/Data";
 
 export async function SeriesLoaders() {
-  const series = await fetchSeries();
-  return series;
+  return fetchMoviesPage("series", 1, "series");
 }

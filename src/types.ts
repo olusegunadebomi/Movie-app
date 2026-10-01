@@ -1,3 +1,8 @@
+export interface MovieSearchPage {
+  results: MovieData[];
+  totalResults: number;
+}
+
 export interface MovieData {
   Title: string;
   Year: string;
