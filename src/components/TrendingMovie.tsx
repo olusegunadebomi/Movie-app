@@ -5,6 +5,7 @@ import FullBookmarkSVG from "../assets/icon-bookmark-full.svg";
 import { useState } from "react";
 import { MovieProps } from "../types";
 import { useData } from "../context/cont";
+import { Link } from "react-router-dom";
 
 function TrendingMovie({ movie }: MovieProps) {
   const [bookmarkHover, setBookmarkHover] = useState(false);
@@ -14,10 +15,14 @@ function TrendingMovie({ movie }: MovieProps) {
 
   return (
     <div className="relative mb-6 w-[78vw] aspect-video md:w-full md:mb-10">
-      <div className="relative h-full group cursor-pointer overflow-hidden rounded-lg">
+      <Link
+        to={`/movie/${movie.imdbID}`}
+        aria-label={`View details for ${title}`}
+        className="relative block h-full group cursor-pointer overflow-hidden rounded-lg"
+      >
         <img
           src={poster || ""}
-          alt="movie"
+          alt={`${title} poster`}
           className={`w-full h-full object-cover rounded-lg transition-all duration-300 group-hover:opacity-50 ${
             bookmarkHover ? "opacity-75 blur-[1px]" : ""
           }`}
@@ -32,48 +37,43 @@ function TrendingMovie({ movie }: MovieProps) {
             <span className="font-medium text-lg text-white">Play</span>
           </div>
         </div>
-      </div>
+        <div className="absolute bottom-3 left-3 right-3 md:bottom-6 md:left-6 md:right-6">
+          <div
+            className={`flex items-center gap-2 text-xs md:text-sm font-light text-white opacity-75 mb-1 transition-all duration-300 ${
+              bookmarkHover ? "scale-105 text-sm md:text-base" : ""
+            }`}
+          >
+            <span>{year}</span>
+            <div className="w-1 h-1 rounded-full border border-white" />
+            <div className="flex items-center gap-1">
+              <img
+                src={MovieSVG}
+                alt="category"
+                className="w-3 h-3 scale-85 md:scale-100"
+              />
+              <span>{movie.Type === "series" ? "TV Series" : "Movie"}</span>
+            </div>
+          </div>
+          <h3
+            className={`truncate font-medium text-base md:text-2xl text-white transition-transform duration-300 ${
+              bookmarkHover ? "scale-105 md:scale-110 md:text-3xl" : ""
+            }`}
+          >
+            {title}
+          </h3>
+        </div>
+      </Link>
 
       <button
         onClick={() => toggleBookmark(movie)}
         aria-pressed={isBookmarked}
+        aria-label={isBookmarked ? "Remove bookmark" : "Add bookmark"}
         onMouseEnter={() => setBookmarkHover(true)}
         onMouseLeave={() => setBookmarkHover(false)}
-        className="absolute top-2 right-2 md:top-4 md:right-6 w-8 h-8 flex items-center justify-center rounded-full border border-white bg-gray-900 bg-opacity-50 hover:opacity-50"
+        className="absolute top-2 right-2 z-10 md:top-4 md:right-6 w-8 h-8 flex items-center justify-center rounded-full border border-white bg-gray-900 bg-opacity-50 hover:opacity-75"
       >
-        <img
-          src={isBookmarked ? FullBookmarkSVG : EmptyBookmarkSVG}
-          alt="bookmark"
-        />
+        <img src={isBookmarked ? FullBookmarkSVG : EmptyBookmarkSVG} alt="" />
       </button>
-
-      <div className="absolute bottom-3 left-3 right-3 md:bottom-6 md:left-6 md:right-6">
-        <div
-          className={`flex items-center gap-2 text-xs md:text-sm font-light text-white opacity-75 mb-1 transition-all duration-300 ${
-            bookmarkHover ? "scale-105 text-sm md:text-base" : ""
-          }`}
-        >
-          <span>2024</span>
-          <div className="w-1 h-1 rounded-full border border-white" />
-          <div className="flex items-center gap-1">
-            <img
-              src={MovieSVG}
-              alt="category"
-              className="w-3 h-3 scale-85 md:scale-100"
-            />
-            <span>{year}</span>
-          </div>
-          <div className="w-1 h-1 rounded-full border border-white" />
-          <span>PG</span>
-        </div>
-        <h3
-          className={`truncate font-medium text-base md:text-2xl text-white transition-transform duration-300 ${
-            bookmarkHover ? "scale-105 md:scale-110 md:text-3xl" : ""
-          }`}
-        >
-          {title}
-        </h3>
-      </div>
     </div>
   );
 }

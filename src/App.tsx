@@ -5,6 +5,7 @@ import Movies from "./features/movies/Movies";
 import Series from "./features/series/Series";
 import Bookmarks from "./features/bookmarks/Bookmarks";
 import AppLayout from "./components/AppLayout";
+import MovieDetails from "./components/MovieDetails";
 import { MoviesLoaders } from "./Loaders/MoviesLoaders";
 import { SeriesLoaders } from "./Loaders/SeriesLoaders";
 import { HomeLoaders } from "./Loaders/HomeLoaders";
@@ -39,12 +40,16 @@ const routes = createBrowserRouter(
           path: "/bookmarks",
           element: <Bookmarks />,
         },
+        {
+          path: "/movie/:imdbID",
+          element: <MovieDetails />,
+        },
       ],
     },
   ],
   {
     basename: base,
-  }
+  },
 );
 
 function App() {

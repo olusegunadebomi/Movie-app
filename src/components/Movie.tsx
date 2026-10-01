@@ -6,6 +6,7 @@ import FullBookmarkSVG from "../assets/icon-bookmark-full.svg";
 import { useState } from "react";
 import { useData } from "../context/cont";
 import { MovieProps } from "../types";
+import { Link } from "react-router-dom";
 
 function Movie({ movie }: MovieProps) {
   if (!movie) return null;
@@ -17,7 +18,11 @@ function Movie({ movie }: MovieProps) {
   return (
     <div className="w-full min-w-0">
       <div className="relative w-full aspect-4/3">
-        <div className="relative group cursor-pointer">
+        <Link
+          to={`/movie/${movie.imdbID}`}
+          aria-label={`View details for ${title}`}
+          className="relative block h-full group cursor-pointer"
+        >
           <img
             src={poster || ""}
             alt={title || "Movie Poster"}
@@ -37,7 +42,7 @@ function Movie({ movie }: MovieProps) {
               </span>
             </div>
           </div>
-        </div>
+        </Link>
 
         <button
           onClick={() => toggleBookmark(movie)}
@@ -66,7 +71,7 @@ function Movie({ movie }: MovieProps) {
                 alt="category"
                 className="w-3 h-3 scale-85 md:scale-100"
               />
-              <span>Movie</span>
+              <span>{movie.Type === "series" ? "TV Series" : "Movie"}</span>
             </div>
             <div className="w-1 h-1 rounded-full border border-white" />
             <span>PG</span>
