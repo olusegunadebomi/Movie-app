@@ -96,7 +96,7 @@ function PaginatedMovies({
 
       {totalPages > 1 && (
         <nav
-          className="mt-20 flex items-center justify-center gap-5 text-white"
+          className="pagination-controls flex items-center justify-center gap-5 text-white"
           aria-label={`${heading} pagination`}
         >
           <button
