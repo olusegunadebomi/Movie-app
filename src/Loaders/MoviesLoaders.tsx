@@ -1,6 +1,5 @@
-import { fetchMovies } from "../Services/Data";
+import { fetchMoviesPage } from "../Services/Data";
 
 export async function MoviesLoaders() {
-  const movies = await fetchMovies();
-  return movies;
+  return fetchMoviesPage("movie", 1, "movie");
 }
