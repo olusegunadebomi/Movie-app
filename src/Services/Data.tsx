@@ -54,12 +54,35 @@ async function fetchSearchPage(
     return { results: [], totalResults: 0 };
   }
 }
+import { MovieDetailsData } from "../types";
 
 export const fetchMoviesPage = (
   search: string,
   page: number = 1,
   type?: "movie" | "series",
 ) => fetchSearchPage(search, page, type);
+
+export async function fetchMovieDetails(
+  imdbID: string,
+): Promise<MovieDetailsData> {
+  if (!API_URL || !API_KEY) {
+    throw new Error("OMDb API URL or key is not configured.");
+  }
+
+  const url = new URL(API_URL);
+  url.searchParams.set("i", imdbID);
+  url.searchParams.set("plot", "full");
+  url.searchParams.set("apikey", API_KEY);
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (!response.ok || data.Response === "False") {
+    throw new Error(data.Error || "Could not load movie details.");
+  }
+
+  return data as MovieDetailsData;
+}
 
 export const searchMovies = async (search: string) =>
   (await fetchSearchPage(search)).results;
